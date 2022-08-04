@@ -5,10 +5,66 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Color Scheme Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dist/css/index.css">
   <script src="index.js" defer></script>
 </head>
 <body>
-  <input type="color">
+  <div class="container">
+    <header>
+      <input type="color">
+      <div class="drop-down">
+        <p class="drop-down__text"></p>
+        <img src="icon-arrow.svg" alt="drop-down arrow">
+        <ul class="drop-down__list">
+          <li class="scheme">
+            <p class="list-text">Monochrome</p>
+            <img src="check-solid.svg" alt="check">
+          </li>
+          <li class="scheme">
+            <p class="list-text">Monochrome-light</p>
+            <img src="check-solid.svg" alt="check">
+          </li>
+          <li class="scheme">
+            <p class="list-text">Monochrome-dark</p>
+            <img src="check-solid.svg" alt="check">
+          </li>
+          <li class="scheme">
+            <p class="list-text">Analogic</p>
+            <img src="check-solid.svg" alt="check">
+          </li>
+          <li class="scheme">
+            <p class="list-text">Complement</p>
+            <img src="check-solid.svg" alt="check">
+          </li>
+          <li class="scheme">
+            <p class="list-text">Analogic-complement</p>
+            <img src="check-solid.svg" alt="check">
+          </li>
+          <li class="scheme">
+            <p class="list-text">Triad</p>
+            <img src="check-solid.svg" alt="check">
+          </li>
+        </ul>
+      </div>
+      <button type="button">Get color scheme</button>
+    </header>
+    <main>
+      <div class="color"></div>
+      <div class="color"></div>
+      <div class="color"></div>
+      <div class="color"></div>
+      <div class="color"></div>
+    </main>
+    <footer>
+      <p class="color-code"></p>
+      <p class="color-code"></p>
+      <p class="color-code"></p>
+      <p class="color-code"></p>
+      <p class="color-code"></p>
+    </footer>
+  </div>
 </body>
 </html>
