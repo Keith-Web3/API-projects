@@ -1,12 +1,210 @@
-input {
-  appearance: none;
-  width: 20px;
-  aspect-ratio: 1/1;
-  border: unset;
-  border-radius: 50%;
-  cursor: pointer;
+/* Box sizing rules & Remove default margin */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
   padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+*::before,
+*::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+body {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  background-color: #000015;
+  font-family: "Inter", Nunito;
+  font-weight: 400;
+  color: #111827;
+}
+
+.copied {
+  position: absolute;
+  inset: 10% auto auto 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 0, 0, 0.6);
+  opacity: 0;
+}
+.copied.active {
+  animation-name: copied;
+  animation-timing-function: linear;
+  animation-duration: 700ms;
+  animation-iteration-count: 1;
+}
+
+@keyframes copied {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+.container {
+  background-color: white;
+}
+
+header {
+  display: flex;
+  padding: 1em;
+  gap: 1em;
+}
+header > * {
+  cursor: pointer;
+}
+header > input {
+  width: 50px;
+  height: 35px;
+  border-radius: 0;
+  padding: 0;
+  border: none;
+}
+
+.drop-down {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 214px;
+  border: 2px solid #9CA3AF;
+  padding: 0.4em;
+  border-radius: 5px;
+  position: relative;
+}
+.drop-down__text {
+  grid-area: text;
+}
+.drop-down__arrow {
+  grid-area: button;
+  width: 8%;
+  transition: transform 250ms linear;
+}
+.drop-down__list {
+  grid-area: list;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  inset: calc(100% + 1em) 0 auto 0;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  padding: 0.5em;
+  background-color: white;
+  font-size: 0.95rem;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-20%);
+  transition: opacity 250ms linear, transform 250ms linear;
+}
+.drop-down.active .drop-down__list {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+.drop-down.active .drop-down__arrow {
+  transform: rotate(180deg);
+}
+
+.scheme {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.scheme img {
+  width: 7%;
+  opacity: 0;
+  transition: opacity 100ms linear;
+}
+.scheme.active p {
+  font-weight: 500;
+}
+.scheme.active img {
+  opacity: 1 !important;
+}
+.scheme:hover img {
+  opacity: 0.3;
+}
+
+.get-color-btn {
+  font-size: 0.9rem;
+  padding-inline: 0.5em;
+  appearance: none;
+  outline: none;
+  border-radius: 5px;
+  border: 2px solid #9CA3AF;
   background-color: transparent;
+  color: #374151;
+}
+
+main, footer {
+  display: flex;
+}
+
+footer {
+  padding: 0.6em 0;
+}
+
+.color {
+  width: 20%;
+  height: 250px;
+  background-color: whitesmoke;
+}
+.color-code {
+  width: 20%;
+  font-size: 0.85rem;
+  text-align: center;
 }
 
 /*# sourceMappingURL=index.css.map */
