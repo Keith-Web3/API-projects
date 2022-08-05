@@ -94,6 +94,7 @@ body {
 }
 .container {
   background-color: white;
+  min-width: 460px;
 }
 
 header {
