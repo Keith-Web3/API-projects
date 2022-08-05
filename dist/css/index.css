@@ -67,6 +67,7 @@ body {
   font-family: "Inter", Nunito;
   font-weight: 400;
   color: #111827;
+  padding-block: 1em;
 }
 
 .copied {
@@ -94,7 +95,6 @@ body {
 }
 .container {
   background-color: white;
-  min-width: 460px;
 }
 
 header {
@@ -111,6 +111,24 @@ header > input {
   border-radius: 0;
   padding: 0;
   border: none;
+}
+header .placeholder {
+  display: none;
+}
+@media (max-width: 400px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header .get-color-btn {
+    padding-block: 0.5em;
+    order: -1;
+  }
+  header .drop-down {
+    order: 3;
+    align-self: center;
+  }
 }
 
 .drop-down {
@@ -204,7 +222,7 @@ footer {
 }
 .color-code {
   width: 20%;
-  font-size: 0.85rem;
+  font-size: clamp(0.6rem, 65%, 0.85rem);
   text-align: center;
 }
 
