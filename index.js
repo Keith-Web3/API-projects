@@ -12,17 +12,6 @@ const copiedAlert = document.querySelector('.copied')
 let mode = "monochrome"
 
 document.body.addEventListener('click', function(e) {
-  if (e.target.matches('.color') || e.target.matches('.color-code')) {
-    const target = e.target.closest('.color-code')
-
-    console.log("working")
-
-    navigator.clipboard.writeText(target.textContent)
-    copiedAlert.classList.add('.active')
-    copiedAlert.addEventListener('animationend', function() {
-      copiedAlert.classList.remove('.active')
-    })
-  }
   if (e.target.matches(".drop-down__arrow") || e.target === dropDown || e.target === dropDownText) return
   dropDown.classList.remove('active')
 })
