@@ -33,7 +33,7 @@ section {
   position: relative;
 }
 .movies-container {
-  padding: $spacer * 2.5 $spacer * 1.25;
+  padding: $spacer * 0.5 $spacer * 1.25;
 }
 .searchbar {
   display: flex;
@@ -123,11 +123,12 @@ button, a {
     margin-right: $spacer * 0.3;
   }
 }
-.movies-container {
-
-}
 .movie {
-  margin-bottom: $spacer * 4;
+  padding-block: $spacer * 2;
+  border-bottom: 1px solid rgba(#9CA3AF, 0.5);
+  &:last-child {
+    border-bottom: none;
+  }
   & > img {
     width: 100%;
   }
@@ -163,6 +164,11 @@ button, a {
       align-items: center;
       gap: $spacer;
       margin-top: $spacer * 0.6;
+      user-select: none;
+      cursor: pointer;
+      &:active {
+        opacity: 0.7;
+      }
     }
   }
   .about-movie {

@@ -95,7 +95,7 @@ section {
 }
 
 .movies-container {
-  padding: 2.5em 1.25em;
+  padding: 0.5em 1.25em;
 }
 
 .searchbar {
@@ -190,7 +190,11 @@ button, a {
 }
 
 .movie {
-  margin-bottom: 4em;
+  padding-block: 2em;
+  border-bottom: 1px solid rgba(156, 163, 175, 0.5);
+}
+.movie:last-child {
+  border-bottom: none;
 }
 .movie > img {
   width: 100%;
@@ -227,6 +231,11 @@ button, a {
   align-items: center;
   gap: 1em;
   margin-top: 0.6em;
+  user-select: none;
+  cursor: pointer;
+}
+.movie .subheader .add-to-watchlist:active {
+  opacity: 0.7;
 }
 .movie .about-movie {
   color: #606063;

@@ -42,12 +42,18 @@ async function getMovie() {
     <p class="about-movie">${Plot}</p>
     `
     moviesContainer.appendChild(movie)
-    console.log(rating)
   })
 }
 searchBtn.addEventListener('click', getMovie)
-console.log(Number("87") / Number("20"))
 
+document.body.addEventListener('click', function(e) {
+  if (e.target.matches(".add-to-watchlist") || e.target.matches(".add-to-watchlist > p") || e.target.matches(".add-to-watchlist > img")) {
+    const movie = e.target.closest(".movie")
+    const savedValue = JSON.parse(localStorage.getItem("#12moviesearchapp")) || []
+
+    localStorage.setItem("#12moviesearchapp", JSON.stringify([...savedValue, `${movie.outerHTML}`]))
+    }
+})
 
 
 
