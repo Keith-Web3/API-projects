@@ -138,7 +138,7 @@ button, a {
     align-items: center;
     justify-content: flex-start;
     gap: $spacer * 0.3;
-    margin-bottom: $spacer;
+    margin-block: $spacer * 0.3 $spacer * 0.7;
     .title {
       font-weight: 700;
       margin-right: $spacer * 0.5;
@@ -154,18 +154,21 @@ button, a {
     color: #FFF;
     display: flex;
     flex-wrap: wrap;
-    gap: $spacer * 0.9;
 
+    .time {
+      margin-right: $spacer * 0.9;
+    }
     .add-to-watchlist {
       display: flex;
       align-items: center;
       gap: $spacer;
+      margin-top: $spacer * 0.6;
     }
   }
   .about-movie {
     color: lighten(#2E2E2F, 20%);
     font-weight: 500;
     font-size: 1.1rem;
-    margin-top: $spacer * 1.2;
+    margin-top: $spacer * 0.8;
   }
 }
