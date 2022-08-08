@@ -2,8 +2,6 @@ const searchInput = document.querySelector("input")
 const searchBtn = document.getElementById("search-btn")
 const moviesContainer = document.querySelector(".movies-container")
 
-searchInput.value = "Thor"
-getMovie()
 async function getMovie() {
   const response = await fetch(`https://www.omdbapi.com/?s=${searchInput.value}&apikey=94a48f77`)
   const data = await response.json()
