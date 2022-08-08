@@ -9,23 +9,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./dist/css/index.css">
-  <script src="index.js" defer></script>
 </head>
 <body>
   <header class="hero-section">
-    <h1>Find your film</h1>
-    <p class="watchlist-link"><a href="watchlist.html">My Watchlist</a></p>
+    <h1>My Watchlist</h1>
+    <p class="watchlist-link"><a href="index.html">Search for movies</a></p>
   </header>
   <section>
-    <div class="searchbar">
-      <img src="./images/search-icon.svg" alt="search icon">
-      <input type="text" aria-label="search-input" placeholder="Search here">
-      <button type="button" id="search-btn">Search</button>
-    </div>
     <div class="movies-container"></div>
     <div class="placeholder">
-      <img src="./images/movie.svg" alt="movie-icon">
-      <p class="error-message">Start exploring</p>
+      <p class="error-message">Your watchlist is looking a little empty...</p>
+      <p class="add-movies">
+        <img src="./images/plus.svg" alt="add movies icon">
+        Let's add some movies
+      </p>
     </div>
   </section>
 </body>
