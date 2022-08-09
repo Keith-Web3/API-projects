@@ -17,7 +17,7 @@ async function getMovie() {
   const moviesArray = data.Search
   
   moviesContainer.innerHTML = ""
-  searchInput.placeholder = "Search here"
+  searchInput.placeholder = "Search a movie"
 
   moviesArray.forEach(async ({ imdbID }) => {
     const response = await fetch(`https://www.omdbapi.com/?i=${imdbID}&apikey=94a48f77`)
