@@ -1,13 +1,24 @@
 const searchInput = document.querySelector("input")
 const searchBtn = document.getElementById("search-btn")
 const moviesContainer = document.querySelector(".movies-container")
+const placeholder = document.querySelector(".placeholder")
 
 async function getMovie() {
+  if (searchInput.value.trim() === "") return
   const response = await fetch(`https://www.omdbapi.com/?s=${searchInput.value}&apikey=94a48f77`)
   const data = await response.json()
+  
+  if (!response.ok || data.Response === "False") {
+    searchInput.value = ""
+    searchInput.placeholder = "Searching something with no data"
+    placeholder.innerHTML = `<p class="error-message">Unable to find what you're looking for. Please try another</p>`
+    return
+  }
   const moviesArray = data.Search
   
   moviesContainer.innerHTML = ""
+  searchInput.placeholder = "Search here"
+
   moviesArray.forEach(async ({ imdbID }) => {
     const response = await fetch(`https://www.omdbapi.com/?i=${imdbID}&apikey=94a48f77`)
     const data = await response.json()
@@ -32,7 +43,7 @@ async function getMovie() {
     <div class="subheader">
       <p class="time">${Runtime}</p>
       <p class="genre">${Genre}</p>
-      <div class="add-to-watchlist">
+      <div class="add-to-watchlist bubble-effect">
         <img src="./images/plus.svg" alt="add to watchlist">
         <p>Watchlist</p>
       </div>
@@ -43,6 +54,9 @@ async function getMovie() {
   })
 }
 searchBtn.addEventListener('click', getMovie)
+searchInput.addEventListener('keydown', e => {
+  if (e.key === "Enter") getMovie()
+})
 
 document.body.addEventListener('click', function(e) {
   if (e.target.matches(".add-to-watchlist") || e.target.matches(".add-to-watchlist > p") || e.target.matches(".add-to-watchlist > img")) {

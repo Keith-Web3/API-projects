@@ -9,18 +9,23 @@ body {
   grid-template: 35vh 1fr / 1fr;
 }
 header {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $spacer * 0.5;
   padding: $spacer * 2.5 $spacer * 1.25;
-  align-items: center;
-  justify-content: space-between;
   background-image: url(../../images/hero.svg);
   background-size: cover;
-  color: #FFF;
+  display: grid;
+  place-items: center;
+
+  .container {
+    width: min(100%, 800px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacer * 0.5;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 h1 {
-  // font-size: 2.675rem;
+  color: #FFF;
   font-weight: 800;
 }
 .watchlist-link a {
@@ -34,6 +39,13 @@ section {
 }
 .movies-container {
   padding: $spacer * 0.5 $spacer * 1.25;
+  display: grid;
+  @media (min-width: 500px) {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+  @media (min-width: 960px) {
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  }
 }
 .searchbar {
   display: flex;
@@ -41,7 +53,7 @@ section {
   justify-content: space-between;
   gap: $spacer * 0.5;
   background-color: #2E2E2F;
-  width: min(100%, 460px);
+  width: min(100%, 800px);
   position: relative;
 
   img {
@@ -61,12 +73,13 @@ section {
     width: 70%;
     &::placeholder {
       color: #9CA3AF;
+      font-size: min(80%, 0.95rem);
     }
   }
   button {
     background-color: #4B4B4B;
     color: #FFF;
-    padding: $spacer * 0.4 $spacer;
+    padding: $spacer * 0.4 $spacer $spacer * 0.45;
     width: 30%;
   }
 
@@ -93,6 +106,7 @@ section {
   width: 100%;
   text-align: center;
   font-size: 1.1rem;
+  padding-inline: $spacer;
 
   img {
     margin-inline: auto;
@@ -110,7 +124,7 @@ section {
 .movies-container:empty + .placeholder {
   display: block;
 }
-button, a {
+a {
   cursor: pointer;
 }
 .add-movies {
@@ -118,6 +132,11 @@ button, a {
   font-weight: 400 !important;
   margin-top: $spacer * 0,3;
 
+  a {
+    text-decoration: none;
+    color: #FFF;
+    
+  }
   img {
     display: inline-block;
     margin-right: $spacer * 0.3;
@@ -126,6 +145,7 @@ button, a {
 .movie {
   padding-block: $spacer * 2;
   border-bottom: 1px solid rgba(#9CA3AF, 0.5);
+  padding-inline: $spacer * 0.5;
   &:last-child {
     border-bottom: none;
   }
@@ -155,17 +175,16 @@ button, a {
     color: #FFF;
     display: flex;
     flex-wrap: wrap;
+    line-height: 2;
 
-    .time {
+    .genre, .time {
       margin-right: $spacer * 0.9;
     }
     .add-to-watchlist {
       display: flex;
       align-items: center;
       gap: $spacer;
-      margin-top: $spacer * 0.6;
       user-select: none;
-      cursor: pointer;
       &:active {
         opacity: 0.7;
       }
@@ -176,5 +195,74 @@ button, a {
     font-weight: 500;
     font-size: 1.1rem;
     margin-top: $spacer * 0.8;
+  }
+
+  @media (min-width: 500px) {
+    display: grid;
+    grid-template: repeat(3, auto) / repeat(2, auto);
+    grid-template-areas: "header header" "img sub-header" "img desc";
+    align-items: center;
+    column-gap: $spacer;
+
+    .header {
+      grid-area: header;
+    }
+    .subheader {
+      grid-area: sub-header;
+      align-self: end;
+    }
+    .about-movie {
+      grid-area: desc;
+      align-self: start;
+    }
+    & > img {
+      grid-area: img;
+      max-width: unset;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  @media (min-width: 960px) {
+    grid-template-areas: "img header" "img sub-header" "img desc";
+
+    h2 {
+      margin-bottom: 0;
+      align-self: end;
+    }
+  }
+  @media (min-width: 570px) and (max-width: 800px) {
+    grid-template-areas: "img header" "img sub-header" "img desc";
+
+    h2 {
+      margin-bottom: 0;
+      align-self: end;
+    }
+  }
+}
+.bubble-effect {
+   position: relative;
+   overflow: hidden;
+   cursor: pointer;
+
+   &::after {
+    content: '';
+    position: absolute;
+    width: 150%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%) scale(0);
+    left: var(--x-offset);
+    top: var(--y-offset);
+    opacity: 1;
+   }
+}
+.new-button::after {
+  animation: button-pulse 400ms ease-out 1;
+}
+@keyframes button-pulse {
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
   }
 }

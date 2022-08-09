@@ -68,18 +68,23 @@ body {
 }
 
 header {
+  padding: 2.5em 1.25em;
+  background-image: url(../../images/hero.svg);
+  background-size: cover;
+  display: grid;
+  place-items: center;
+}
+header .container {
+  width: min(100%, 800px);
   display: flex;
   flex-wrap: wrap;
   gap: 0.5em;
-  padding: 2.5em 1.25em;
   align-items: center;
   justify-content: space-between;
-  background-image: url(../../images/hero.svg);
-  background-size: cover;
-  color: #FFF;
 }
 
 h1 {
+  color: #FFF;
   font-weight: 800;
 }
 
@@ -96,6 +101,17 @@ section {
 
 .movies-container {
   padding: 0.5em 1.25em;
+  display: grid;
+}
+@media (min-width: 500px) {
+  .movies-container {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+}
+@media (min-width: 960px) {
+  .movies-container {
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  }
 }
 
 .searchbar {
@@ -104,7 +120,7 @@ section {
   justify-content: space-between;
   gap: 0.5em;
   background-color: #2E2E2F;
-  width: min(100%, 460px);
+  width: min(100%, 800px);
   position: relative;
 }
 .searchbar img {
@@ -125,11 +141,12 @@ section {
 }
 .searchbar input::placeholder {
   color: #9CA3AF;
+  font-size: min(80%, 0.95rem);
 }
 .searchbar button {
   background-color: #4B4B4B;
   color: #FFF;
-  padding: 0.4em 1em;
+  padding: 0.4em 1em 0.45em;
   width: 30%;
 }
 @media (min-width: 460px) {
@@ -156,6 +173,7 @@ section {
   width: 100%;
   text-align: center;
   font-size: 1.1rem;
+  padding-inline: 1em;
 }
 .placeholder img {
   margin-inline: auto;
@@ -175,7 +193,7 @@ section {
   display: block;
 }
 
-button, a {
+a {
   cursor: pointer;
 }
 
@@ -183,6 +201,10 @@ button, a {
   color: #FFF !important;
   font-weight: 400 !important;
   margin-top: 0em, 3;
+}
+.add-movies a {
+  text-decoration: none;
+  color: #FFF;
 }
 .add-movies img {
   display: inline-block;
@@ -192,6 +214,7 @@ button, a {
 .movie {
   padding-block: 2em;
   border-bottom: 1px solid rgba(156, 163, 175, 0.5);
+  padding-inline: 0.5em;
 }
 .movie:last-child {
   border-bottom: none;
@@ -222,17 +245,16 @@ button, a {
   color: #FFF;
   display: flex;
   flex-wrap: wrap;
+  line-height: 2;
 }
-.movie .subheader .time {
+.movie .subheader .genre, .movie .subheader .time {
   margin-right: 0.9em;
 }
 .movie .subheader .add-to-watchlist {
   display: flex;
   align-items: center;
   gap: 1em;
-  margin-top: 0.6em;
   user-select: none;
-  cursor: pointer;
 }
 .movie .subheader .add-to-watchlist:active {
   opacity: 0.7;
@@ -242,6 +264,79 @@ button, a {
   font-weight: 500;
   font-size: 1.1rem;
   margin-top: 0.8em;
+}
+@media (min-width: 500px) {
+  .movie {
+    display: grid;
+    grid-template: repeat(3, auto)/repeat(2, auto);
+    grid-template-areas: "header header" "img sub-header" "img desc";
+    align-items: center;
+    column-gap: 1em;
+  }
+  .movie .header {
+    grid-area: header;
+  }
+  .movie .subheader {
+    grid-area: sub-header;
+    align-self: end;
+  }
+  .movie .about-movie {
+    grid-area: desc;
+    align-self: start;
+  }
+  .movie > img {
+    grid-area: img;
+    max-width: unset;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+@media (min-width: 960px) {
+  .movie {
+    grid-template-areas: "img header" "img sub-header" "img desc";
+  }
+  .movie h2 {
+    margin-bottom: 0;
+    align-self: end;
+  }
+}
+@media (min-width: 570px) and (max-width: 800px) {
+  .movie {
+    grid-template-areas: "img header" "img sub-header" "img desc";
+  }
+  .movie h2 {
+    margin-bottom: 0;
+    align-self: end;
+  }
+}
+
+.bubble-effect {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.bubble-effect::after {
+  content: "";
+  position: absolute;
+  width: 150%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%) scale(0);
+  left: var(--x-offset);
+  top: var(--y-offset);
+  opacity: 1;
+}
+
+.new-button::after {
+  animation: button-pulse 400ms ease-out 1;
+}
+
+@keyframes button-pulse {
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
