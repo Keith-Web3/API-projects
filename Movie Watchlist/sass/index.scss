@@ -79,8 +79,8 @@ section {
   button {
     background-color: #4B4B4B;
     color: #FFF;
-    padding: $spacer * 0.4 $spacer $spacer * 0.45;
-    width: 30%;
+    padding: $spacer * 0.6 $spacer $spacer * 0.65;
+    width: min(30%, 200px);
   }
 
   @media (min-width: 460px) {
@@ -219,7 +219,7 @@ a {
       grid-area: img;
       max-width: unset;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
   }
   @media (min-width: 960px) {
@@ -236,6 +236,9 @@ a {
     h2 {
       margin-bottom: 0;
       align-self: end;
+    }
+    & > img {
+      object-fit: cover;
     }
   }
 }

@@ -146,8 +146,8 @@ section {
 .searchbar button {
   background-color: #4B4B4B;
   color: #FFF;
-  padding: 0.4em 1em 0.45em;
-  width: 30%;
+  padding: 0.6em 1em 0.65em;
+  width: min(30%, 200px);
 }
 @media (min-width: 460px) {
   .searchbar {
@@ -288,7 +288,7 @@ a {
     grid-area: img;
     max-width: unset;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 @media (min-width: 960px) {
@@ -307,6 +307,9 @@ a {
   .movie h2 {
     margin-bottom: 0;
     align-self: end;
+  }
+  .movie > img {
+    object-fit: cover;
   }
 }
 

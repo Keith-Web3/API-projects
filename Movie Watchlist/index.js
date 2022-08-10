@@ -7,6 +7,7 @@ async function getMovie() {
   if (searchInput.value.trim() === "") return
   const response = await fetch(`https://www.omdbapi.com/?s=${searchInput.value}&apikey=94a48f77`)
   const data = await response.json()
+  console.log(data)
   
   if (!response.ok || data.Response === "False") {
     searchInput.value = ""
@@ -58,9 +59,9 @@ searchInput.addEventListener('keydown', e => {
   if (e.key === "Enter") getMovie()
 })
 
-document.body.addEventListener('click', function(e) {
-  if (e.target.matches(".add-to-watchlist") || e.target.matches(".add-to-watchlist > p") || e.target.matches(".add-to-watchlist > img")) {
-    const movie = e.target.closest(".movie")
+document.body.addEventListener('click', function({ target }) {
+  if (target.matches(".add-to-watchlist") || target.matches(".add-to-watchlist > p") || target.matches(".add-to-watchlist > img")) {
+    const movie = target.closest(".movie")
     const savedValue = JSON.parse(localStorage.getItem("#12moviesearchapp")) || []
 
     localStorage.setItem("#12moviesearchapp", JSON.stringify([...savedValue, `${movie.outerHTML}`]))
