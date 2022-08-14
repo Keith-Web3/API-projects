@@ -16,7 +16,6 @@ async function* getMap() {
       fullScreenIcon.style.display = "none"
       throw new Error("Error, code: " + res.status)
     }
-    console.log("below")
     searchInput.classList.remove("error")
     searchInput.placeholder = "Search for any IP Address"
 
