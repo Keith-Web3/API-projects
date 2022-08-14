@@ -1,0 +1,82 @@
+@use "resets";
+$spacer: 1em;
+$clr-primary: hsl(0, 0%, 59%);
+$clr-secondary: hsl(0, 0%, 17%);
+
+body {
+  font-family: "Rubik", "Nunito", sans-serif;
+  font-weight: 400;
+  isolation: isolate;
+}
+.hero-section {
+  background-image: url(../../images/pattern-bg.png);
+  text-align: center;
+  padding: $spacer;
+
+  h1 {
+    color: #FFF;
+    font-weight: 400;
+    font-size: 1.7rem;
+  }
+  .searchbar {
+    display: grid;
+    grid-template-columns: 1fr 43px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: $spacer auto 0;
+
+    button, input {
+      appearance: none;
+      border: none;
+      outline: none;
+      height: 100%;
+      padding: $spacer * 0.65 $spacer * 0.85;
+    }
+    input {
+      &::placeholder {
+        color: $clr-primary;
+      }
+      &.error {
+        &::placeholder {
+          color: red;
+        }
+      }
+    }
+    button {
+      display: grid;
+      place-items: center;
+      background-color: $clr-secondary;
+      cursor: pointer;
+
+      img {
+        transform: scale(80%, 80%);
+      }
+    }
+  }
+  .modal {
+    background-color: #FFF;
+    margin: $spacer * 1.2 auto -55%;
+    border-radius: 10px;
+    padding: $spacer * 1.3 $spacer;
+    box-shadow: 0 3px 5px rgba(black, 0.1);
+
+    .info:not(:last-child) {
+      margin-bottom: $spacer;
+    }
+    h3 {
+      color: $clr-primary;
+      font-weight: 400;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    p {
+      color: $clr-secondary;
+      font-weight: 400;
+      font-size: 1.2rem;
+    }
+  }
+}
+#map {
+  height: 500px;
+  z-index: -1;
+}
