@@ -1,6 +1,7 @@
 const searchBtn = document.getElementById("search-btn")
 const searchInput = document.getElementById("search-input")
 const modalInfo = document.querySelectorAll(".info > p")
+let map
 
 async function* getMap() {
   try {
@@ -12,6 +13,7 @@ async function* getMap() {
       searchInput.classList.add("error")
       throw new Error("Error, code: " + res.status)
     }
+    console.log("below")
     searchInput.classList.remove("error")
     searchInput.placeholder = "Search for any IP Address"
 
@@ -22,7 +24,10 @@ async function* getMap() {
     modalInfo[3].textContent = isp
 
     yield 1 // first stop
-    let map = L.map('map').setView([lat, lng], 13);
+    if (map !== undefined && map !== null) {
+      map.remove()
+    }
+    map = L.map('map').setView([lat, lng], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '© OpenStreetMap'
