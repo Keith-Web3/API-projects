@@ -1,6 +1,8 @@
 const searchBtn = document.getElementById("search-btn")
 const searchInput = document.getElementById("search-input")
 const modalInfo = document.querySelectorAll(".info > p")
+const fullScreenIcon = document.getElementById("compress-icon")
+const mapDiv = document.getElementById("map")
 let map
 
 async function* getMap() {
@@ -11,6 +13,7 @@ async function* getMap() {
       searchInput.value = ""
       searchInput.placeholder = "Invalid IP Address"
       searchInput.classList.add("error")
+      fullScreenIcon.style.display = "none"
       throw new Error("Error, code: " + res.status)
     }
     console.log("below")
@@ -33,6 +36,8 @@ async function* getMap() {
       attribution: '© OpenStreetMap'
     }).addTo(map);
     let marker = L.marker([lat, lng]).addTo(map);
+    map.addEventListener('click', onMapClick);
+    fullScreenIcon.style.display = "block"
   } catch(error) {
     console.error(error)
   }
@@ -56,7 +61,10 @@ searchInput.addEventListener('keydown', function(e) {
   e.preventDefault()
 })
 function onMapClick(e) {
-  console.log(e.latlng)
+  alert("You clicked the map at " + e.latlng)
 }
-
-map.addEventListener('click', onMapClick);
+fullScreenIcon.addEventListener('click', function(e) {
+  e.stopPropagation()
+  mapDiv.classList.toggle("full-screen")
+  this.src = mapDiv.classList.contains("full-screen") ? "./images/compress-solid.svg" : "./images/expand-solid.svg"
+})

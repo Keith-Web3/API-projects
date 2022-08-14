@@ -66,6 +66,7 @@ body {
   display: grid;
   grid-template-rows: auto 1fr;
   min-height: 100vh;
+  position: relative;
 }
 
 .hero-section {
@@ -168,6 +169,19 @@ body {
 #map {
   min-height: 500px;
   z-index: -1;
+  position: relative;
+}
+#map.full-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+#map img {
+  width: 25px;
+  position: absolute;
+  inset: auto 1em 1.5em auto;
+  cursor: pointer;
+  display: none;
 }
 
 /*# sourceMappingURL=index.css.map */

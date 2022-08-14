@@ -10,6 +10,7 @@ body {
   display: grid;
   grid-template-rows: auto 1fr;
   min-height: 100vh;
+  position: relative;
 }
 .hero-section {
   background-image: url(../../images/pattern-bg.png);
@@ -115,4 +116,18 @@ body {
 #map {
   min-height: 500px;
   z-index: -1;
+  position: relative;
+
+  &.full-screen {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+  }
+  img {
+    width: 25px;
+    position: absolute;
+    inset: auto $spacer $spacer * 1.5 auto;
+    cursor: pointer;
+    display: none;
+  }
 }
