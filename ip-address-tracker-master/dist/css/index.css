@@ -176,12 +176,13 @@ body {
   inset: 0;
   z-index: 3;
 }
-#map img {
+#map #compress-icon {
   width: 25px;
   position: absolute;
   inset: auto 1em 1.5em auto;
   cursor: pointer;
   display: none;
+  z-index: 401;
 }
 
 /*# sourceMappingURL=index.css.map */

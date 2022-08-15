@@ -123,11 +123,12 @@ body {
     inset: 0;
     z-index: 3;
   }
-  img {
+  #compress-icon {
     width: 25px;
     position: absolute;
     inset: auto $spacer $spacer * 1.5 auto;
     cursor: pointer;
     display: none;
+    z-index: 401;
   }
 }
