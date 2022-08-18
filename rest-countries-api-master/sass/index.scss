@@ -1,0 +1,178 @@
+@use "resets";
+@use "variables" as v;
+
+body {
+  font-family: 'Nunito Sans', Nunito, sans-serif;
+  font-weight: 300;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: v.$clr-blue-300;
+  padding: v.$spacer * 1.25 v.$spacer;
+  box-shadow: 0 3px 3px darken(v.$clr-gray-100, 5%);
+  margin-bottom: 3px;
+
+  .title {
+    font-weight: 800;
+  }
+  .mode {
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    gap: v.$spacer * 0.5;
+    min-width: 100px;
+    cursor: pointer;
+
+    img {
+      max-width: 20px;
+    }
+  }
+}
+
+main {
+  background-color: v.$clr-gray-100;
+  min-height: 100vh;
+  padding: v.$spacer;
+
+  .search-bar {
+    display: flex;
+    background-color: v.$clr-white;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(#000, 0.06);
+    margin-bottom: v.$spacer;
+    overflow: hidden;
+    
+    img {
+      margin-inline: v.$spacer * 1.6;
+      max-width: 20px;
+    }
+    input {
+      width: 100%;
+      appearance: none;
+      border: none;
+      outline: none;
+      padding-block: v.$spacer;
+      font-size: 0.9rem;
+      font-weight: 600;
+
+      &::placeholder {
+        color: rgba(v.$clr-gray-200, 0.5);
+      }
+    }
+  }
+  @include v.mq(480px) {
+    display: grid;
+    grid-template: repeat(2, auto) / auto min(240px, 40%);
+    grid-template-areas: "search-bar drop-down" "countries countries";
+    align-items: start;
+    gap: v.$spacer;
+
+    .search-bar {grid-area: search-bar;}
+    .filter {
+      grid-area: drop-down;
+      width: 100%;
+    }
+    .countries {grid-area: countries;}
+  }
+}
+.filter {
+  width: min(70%, 210px);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  position: relative;
+  
+  &__selected {
+    margin-bottom: v.$spacer * 0.3;
+    background-color: v.$clr-white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: v.$spacer;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(#000, 0.1);
+    cursor: pointer;
+    
+    img {
+      width: min(10%, 13px);
+      object-fit: contain;
+      transform: rotate(180deg);
+      transition: transform 150ms linear;
+    }
+  }
+  &__list {
+    list-style-type: none;
+    background-color: v.$clr-white;
+    padding: v.$spacer;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 5px rgba(#000, 0.1);
+    visibility: hidden;
+    position: absolute;
+    inset: auto 0 auto 0;
+    opacity: 0;
+    transform: translateY(-10%);
+    transition: transform 200ms linear, opacity 200ms linear, visibility 200ms linear;
+
+    li:hover {
+      font-weight: 800;
+    }
+    li:not(:last-child) {
+      margin-bottom: v.$spacer * 0.5;
+    }
+  }
+  &.opened {
+    .filter__selected {
+      img {
+        transform: rotate(0);
+      }
+    }
+    .filter__list {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+.countries {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: v.$spacer;
+  margin-top: v.$spacer * 2.5;
+
+  .country {
+    width: min(100%, 250px);
+    box-shadow: 0 3px 5px rgba(#000, 0.1);
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+
+    &__flag {
+      min-height: 155px;
+      object-fit: cover;
+    }
+    &__info {
+      padding: v.$spacer;
+
+      p {
+        font-size: 0.94rem;
+
+        &:not(:last-child) {
+          margin-bottom: v.$spacer * 0.5;
+        }
+      }
+      h2 {
+        font-weight: 800;
+        font-size: 1.25rem;
+        margin-bottom: v.$spacer * 0.6;
+      }
+      strong {
+        font-size: 1rem;
+        font-weight: 600;
+      }
+    }
+  }
+}

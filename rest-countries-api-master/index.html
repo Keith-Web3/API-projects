@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./dist/css/index.css">
+  <script src="./index.js" defer></script>
+  <title>Countries</title>
+</head>
+<body>
+  <header>
+    <p class="title">Where in the world?</p>
+    <div class="mode">
+      <img src="./images/icon-moon.svg" alt="color-mode-icon">
+      <p>Dark Mode</p>
+    </div>
+  </header>
+  <main>
+    <div class="search-bar">
+      <img src="./images/search-icon.svg" alt="arrow icon" class="search-bar__icon">
+      <input type="text" aria-label="Search for a country" placeholder="Search for a country" class="search-bar__input">
+    </div>
+    <div class="filter">
+      <div class="filter__selected">
+        <p>Filter by Region</p>
+        <img src="./images/icon-arrow.svg" alt="drop-down arrow">
+      </div>
+      <ul class="filter__list">
+        <li>Africa</li>
+        <li>America</li>
+        <li>Asia</li>
+        <li>Europe</li>
+        <li>Oceania</li>
+      </ul>
+    </div>
+    <div class="countries">
+
+    </div>
+  </main>
+</body>
+</html>
