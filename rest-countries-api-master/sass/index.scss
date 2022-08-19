@@ -43,7 +43,8 @@ main {
     box-shadow: 0 3px 5px rgba(#000, 0.06);
     margin-bottom: v.$spacer;
     overflow: hidden;
-    
+    max-width: 450px;
+
     img {
       margin-inline: v.$spacer * 1.6;
       max-width: 20px;
@@ -174,5 +175,32 @@ main {
         font-weight: 600;
       }
     }
+  }
+}
+.dark-mode {
+  color: v.$clr-gray-200;
+  background-color: v.$clr-blue-300;
+  main {
+    background-color: v.$clr-blue-300;
+  }
+  header {
+    color: v.$clr-white;
+    box-shadow: 0 3px 3px darken(v.$clr-blue-300, 5%);
+  }
+  h2, strong {
+    color: v.$clr-white;
+  }
+  .filter__selected,
+  .filter__list {
+    color: v.$clr-gray-200;
+  }
+
+  header,
+  .search-bar,
+  .filter__selected,
+  .filter__list,
+  .country__info,
+  input {
+    background-color: v.$clr-blue-200;
   }
 }

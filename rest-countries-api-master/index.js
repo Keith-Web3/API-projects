@@ -2,6 +2,7 @@ const selectFilter = document.querySelector(".filter__selected")
 const filterListElements = document.querySelectorAll(".filter__list > li")
 const countries = document.querySelector(".countries")
 const searchInput = document.querySelector(".search-bar__input")
+const colorMode = document.querySelector(".mode")
 
 selectFilter.addEventListener('click', function() {
   this.closest('.filter').classList.toggle('opened')
@@ -41,3 +42,7 @@ searchInput.addEventListener('keydown', function(e) {
   if (e.key === "Enter") submitSearchInput()
 })
 searchInput.previousElementSibling.addEventListener("click", submitSearchInput)
+
+colorMode.addEventListener('click', function() {
+  document.body.classList.toggle("dark-mode")
+})

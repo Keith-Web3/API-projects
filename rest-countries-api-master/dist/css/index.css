@@ -100,6 +100,7 @@ main .search-bar {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.06);
   margin-bottom: 1em;
   overflow: hidden;
+  max-width: 450px;
 }
 main .search-bar img {
   margin-inline: 1.6em;
@@ -225,6 +226,33 @@ main .search-bar input::placeholder {
 .countries .country__info strong {
   font-size: 1rem;
   font-weight: 600;
+}
+
+.dark-mode {
+  color: hsl(0deg, 0%, 52%);
+  background-color: hsl(207deg, 26%, 17%);
+}
+.dark-mode main {
+  background-color: hsl(207deg, 26%, 17%);
+}
+.dark-mode header {
+  color: hsl(0deg, 0%, 100%);
+  box-shadow: 0 3px 3px #171f27;
+}
+.dark-mode h2, .dark-mode strong {
+  color: hsl(0deg, 0%, 100%);
+}
+.dark-mode .filter__selected,
+.dark-mode .filter__list {
+  color: hsl(0deg, 0%, 52%);
+}
+.dark-mode header,
+.dark-mode .search-bar,
+.dark-mode .filter__selected,
+.dark-mode .filter__list,
+.dark-mode .country__info,
+.dark-mode input {
+  background-color: hsl(209deg, 23%, 22%);
 }
 
 /*# sourceMappingURL=index.css.map */
