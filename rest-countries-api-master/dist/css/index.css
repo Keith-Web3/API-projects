@@ -161,7 +161,7 @@ main .search-bar input::placeholder {
   width: min(10%, 13px);
   object-fit: contain;
   transform: rotate(180deg);
-  transition: transform 150ms linear;
+  transition: transform 150ms linear, color 200ms linear, background-color 200ms linear;
 }
 .filter__list {
   list-style-type: none;
@@ -175,7 +175,7 @@ main .search-bar input::placeholder {
   inset: auto 0 auto 0;
   opacity: 0;
   transform: translateY(-10%);
-  transition: transform 200ms linear, opacity 200ms linear, visibility 200ms linear;
+  transition: transform 200ms linear, opacity 200ms linear, visibility 200ms linear, color 200ms linear, background-color 200ms linear;
 }
 .filter__list li:hover {
   font-weight: 800;
@@ -229,7 +229,7 @@ main .search-bar input::placeholder {
 }
 
 .dark-mode {
-  color: hsl(0deg, 0%, 52%);
+  color: hsl(0deg, 0%, 98%);
   background-color: hsl(207deg, 26%, 17%);
 }
 .dark-mode main {
@@ -239,12 +239,12 @@ main .search-bar input::placeholder {
   color: hsl(0deg, 0%, 100%);
   box-shadow: 0 3px 3px #171f27;
 }
-.dark-mode h2, .dark-mode strong {
+.dark-mode h2, .dark-mode strong, .dark-mode input {
   color: hsl(0deg, 0%, 100%);
 }
 .dark-mode .filter__selected,
 .dark-mode .filter__list {
-  color: hsl(0deg, 0%, 52%);
+  color: hsl(0deg, 0%, 98%);
 }
 .dark-mode header,
 .dark-mode .search-bar,

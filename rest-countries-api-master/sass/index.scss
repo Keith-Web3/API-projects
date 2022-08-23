@@ -101,7 +101,7 @@ main {
       width: min(10%, 13px);
       object-fit: contain;
       transform: rotate(180deg);
-      transition: transform 150ms linear;
+      transition: transform 150ms linear, color 200ms linear, background-color 200ms linear;
     }
   }
   &__list {
@@ -116,7 +116,7 @@ main {
     inset: auto 0 auto 0;
     opacity: 0;
     transform: translateY(-10%);
-    transition: transform 200ms linear, opacity 200ms linear, visibility 200ms linear;
+    transition: transform 200ms linear, opacity 200ms linear, visibility 200ms linear, color 200ms linear, background-color 200ms linear;
 
     li:hover {
       font-weight: 800;
@@ -178,7 +178,7 @@ main {
   }
 }
 .dark-mode {
-  color: v.$clr-gray-200;
+  color: v.$clr-gray-100;
   background-color: v.$clr-blue-300;
   main {
     background-color: v.$clr-blue-300;
@@ -187,12 +187,12 @@ main {
     color: v.$clr-white;
     box-shadow: 0 3px 3px darken(v.$clr-blue-300, 5%);
   }
-  h2, strong {
+  h2, strong, input {
     color: v.$clr-white;
   }
   .filter__selected,
   .filter__list {
-    color: v.$clr-gray-200;
+    color: v.$clr-gray-100;
   }
 
   header,
