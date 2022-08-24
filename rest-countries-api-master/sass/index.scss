@@ -204,3 +204,85 @@ main {
     background-color: v.$clr-blue-200;
   }
 }
+
+
+.info-main {
+  display: block !important;
+}
+
+.selected-country {
+  margin: v.$spacer auto 0;
+  @include v.mq(700px) {
+    display: grid;
+    grid-template: 1fr / repeat(2, 1fr);
+    column-gap: v.$spacer * 2;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__flag {
+    min-height: 155px;
+    object-fit: cover;
+    margin-bottom: v.$spacer;
+  }
+  &__body {
+    padding-block: v.$spacer * 2;
+
+    p {
+      font-size: 0.94rem;
+
+      &:not(:last-child) {
+        margin-bottom: v.$spacer * 0.5;
+      }
+    }
+    h2 {
+      font-weight: 800;
+      font-size: 1.25rem;
+      margin-bottom: v.$spacer * 0.6;
+    }
+    strong {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+  &__info {
+    display: grid;
+    grid-template: repeat(3, auto) / 1fr;
+    row-gap: v.$spacer;
+
+    .borders {
+      display: flex;
+      flex-wrap: wrap;
+      gap: v.$spacer * 0.5;
+
+      strong {
+        font-size: 1.1rem;
+      }
+      span {
+        display: inline-block;
+        padding: v.$spacer * 0.3;
+        min-width: 75px;
+        text-align: center;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(#000, 0.1);
+        font-weight: 600;
+      }
+    }
+    @include v.mq(450px) {
+      grid-template: repeat(2, auto) / repeat(2, 1fr);
+    }
+    @include v.mq(700px) {
+      .borders {
+        margin-top: v.$spacer;
+        grid-column: span 2;
+
+        span:not(:last-child) {
+          margin-right: v.$spacer * 0.2;
+        }
+      }
+    }
+  }
+  @media (min-width: 450px) and (max-width: 700px) {
+    max-width: 470px;
+  }
+}
