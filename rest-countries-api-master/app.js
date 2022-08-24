@@ -34,12 +34,13 @@ async function getCountries(param) {
             <p class="population"><strong>Population:</strong> ${population}</p>
             <p class="region"><strong>Region:</strong> ${region}</p>
             <p class="capital"><strong>Capital:</strong> ${capital}</p>
+            <span id="official-name">${official}</span>
           </div>
         </div>
       `
       document.querySelectorAll(".country").forEach(country => {
         country.addEventListener("click", function() {
-          localStorage.setItem("#g28boret", official)
+          localStorage.setItem("#g28boret", this.children[1].lastElementChild.textContent)
           location = "./info/info.html"
         })
       })
